@@ -1,0 +1,5 @@
+.table-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.table-shell { margin-top: 8px; }
+.table-row-btn { background: transparent; color: var(--primary); border: none; padding: 0; }
+.employee-detail-list { display: grid; gap: 8px; }
+.employee-detail-list div { padding: 10px 0; border-bottom: 1px solid var(--border); }

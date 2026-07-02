@@ -1,0 +1,7 @@
+[
+  {"id":1,"title":"Quarterly review reminders","message":"Please confirm your goals before Friday noon.","timestamp":"2026-07-01T09:15:00","read":false,"category":"Reminder"},
+  {"id":2,"title":"New policy published","message":"The updated expense policy is available in the policy hub.","timestamp":"2026-06-30T14:40:00","read":true,"category":"Policy"},
+  {"id":3,"title":"Team lunch on Thursday","message":"Join the cross-functional lunch in the executive lounge.","timestamp":"2026-06-29T11:00:00","read":false,"category":"Events"},
+  {"id":4,"title":"Access request approved","message":"Your access to the analytics workspace has been approved.","timestamp":"2026-06-28T16:20:00","read":true,"category":"System"},
+  {"id":5,"title":"Payroll schedule update","message":"Payroll processing has moved to the second Tuesday of the month.","timestamp":"2026-06-27T08:05:00","read":false,"category":"Finance"}
+]

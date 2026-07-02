@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employees</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/employees.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">People Operations</p>
+            <h1>Employee Directory</h1>
+          </div>
+          <div class="topbar-actions">
+            <a href="./notifications.html" class="icon-link" data-testid="notification-btn" aria-label="Notifications">🔔</a>
+            <button id="logoutBtn" class="btn secondary" data-testid="logout-btn" type="button">Logout</button>
+          </div>
+        </header>
+        <main class="content">
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Directory</h2>
+              <div class="panel-actions">
+                <input id="employeeSearch" type="search" placeholder="Search employee" data-testid="employee-search" />
+                <select id="departmentFilter" data-testid="department-filter">
+                  <option value="all">All Departments</option>
+                </select>
+                <select id="statusFilter" data-testid="status-filter">
+                  <option value="all">All Statuses</option>
+                  <option value="Active">Active</option>
+                  <option value="On Leave">On Leave</option>
+                  <option value="Pending">Pending</option>
+                </select>
+                <select id="sortSelect" data-testid="sort-select">
+                  <option value="name">Sort by Name</option>
+                  <option value="department">Sort by Department</option>
+                  <option value="joiningDate">Sort by Joining Date</option>
+                </select>
+              </div>
+            </div>
+            <div id="employeeTable" class="table-shell"></div>
+            <div id="pagination" class="pagination-shell"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="modal" id="employeeModal" aria-hidden="true">
+      <div class="modal-card large" role="dialog" aria-modal="true" aria-labelledby="employeeModalTitle">
+        <div id="employeeModalContent"></div>
+        <div class="actions-row">
+          <button id="closeEmployeeModal" class="btn secondary" data-testid="close-employee-modal" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/employees.js"></script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.chart-card { min-height: 220px; }
+.chart-placeholder { height: 140px; border-radius: 16px; background: linear-gradient(135deg, #eef4ff 0%, #dbe9ff 100%); display: grid; place-items: center; color: var(--primary-dark); font-weight: 600; }
+.activity-list, .notification-list { display: flex; flex-direction: column; gap: 10px; }
+.activity-item { padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: #fcfeff; }
+.notifications-list { display: flex; flex-direction: column; gap: 12px; }

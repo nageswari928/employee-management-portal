@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notifications</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar"></aside>
+      <div class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Internal Communications</p>
+            <h1>Notifications</h1>
+          </div>
+          <div class="topbar-actions">
+            <a href="./notifications.html" class="icon-link" data-testid="notification-btn" aria-label="Notifications">🔔</a>
+            <button id="logoutBtn" class="btn secondary" data-testid="logout-btn" type="button">Logout</button>
+          </div>
+        </header>
+        <main class="content">
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Inbox</h2>
+              <div class="panel-actions">
+                <input id="notificationSearch" type="search" placeholder="Search notifications" data-testid="notification-search" />
+                <select id="notificationFilter" data-testid="notification-filter">
+                  <option value="all">All</option>
+                  <option value="unread">Unread</option>
+                  <option value="read">Read</option>
+                </select>
+              </div>
+            </div>
+            <div id="notificationsList" class="notifications-list"></div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script type="module" src="./js/notifications.js"></script>
+  </body>
+</html>
