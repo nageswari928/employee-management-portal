@@ -20,6 +20,8 @@ class EmployeesController {
     this.pageSize = 8;
     this.currentPage = 1;
     this.filters = { department: 'all', status: 'all', search: '', sort: 'name' };
+    this.employeeTable =
+        page.getByTestId("employee-table");
     this.init();
   }
 
