@@ -1,0 +1,63 @@
+name: Portal CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Portal
+        uses: actions/checkout@v4
+
+      - name: Checkout Playwright Repository
+        uses: actions/checkout@v4
+        with:
+          repository: nageswari928/employee-management-playwright
+          token: ${{ secrets.PAT }}
+          path: playwright
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright Dependencies
+        working-directory: playwright
+        run: npm install
+
+      - name: Install Browsers
+        working-directory: playwright
+        run: npx playwright install --with-deps
+
+      - name: Start Local Server
+        run: |
+          python3 -m http.server 8000 &
+          sleep 5
+
+      - name: Run Playwright Tests
+        working-directory: playwright
+        env:
+          BASE_URL: http://localhost:8000
+        run: npx playwright test
+
+      - name: Check Threshold
+        working-directory: playwright
+        run: node scripts/check-threshold.js
+
+      - name: Build Passed
+        run: echo "Threshold satisfied. Build Allowed."
+
+      - name: Upload Playwright Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright/playwright-report
+            playwright/test-results
