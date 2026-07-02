@@ -19,13 +19,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: nageswari928/employee-management-playwright
-          token: ${{ secrets.PAT }}
           path: playwright
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install Playwright Dependencies
         working-directory: playwright
