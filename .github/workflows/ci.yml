@@ -39,6 +39,8 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Portal App
+        env:
+          VITE_COVERAGE: "true"
         run: npm run build
 
       - name: Install Playwright Dependencies
