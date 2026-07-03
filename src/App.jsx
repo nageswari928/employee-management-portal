@@ -244,6 +244,10 @@ export default function App() {
     );
   }
 
+  const basename = window.location.pathname.startsWith('/employee-management-portal')
+    ? '/employee-management-portal'
+    : '';
+
   return (
     <AppContext.Provider
       value={{
@@ -263,7 +267,7 @@ export default function App() {
         deleteNotification
       }}
     >
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           {/* Public Route */}
           <Route path="/login.html" element={<Login />} />

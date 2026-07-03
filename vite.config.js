@@ -18,6 +18,7 @@ const htmlFallbackPlugin = () => ({
 });
 
 export default defineConfig({
+  base: './',
   plugins: [
     react(), 
     htmlFallbackPlugin(),
