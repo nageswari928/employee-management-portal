@@ -36,7 +36,7 @@ jobs:
           node-version: 22
 
       - name: Install Portal Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Portal App
         run: npm run build
