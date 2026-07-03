@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test-and-build:
 
@@ -48,9 +53,21 @@ jobs:
       - name: Check Threshold
         working-directory: playwright
         run: node scripts/check-threshold.js
-
+  
       - name: Build Passed
         run: echo "Threshold satisfied. Build Allowed."
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy Website
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: Upload Playwright Report
         if: always()
@@ -60,3 +77,41 @@ jobs:
           path: |
             playwright/playwright-report
             playwright/test-results
+  analyzer:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Portal Repository
+        uses: actions/checkout@v4
+        with:
+          path: employee-management-portal
+
+      - name: Checkout Repository Analyzer
+        uses: actions/checkout@v4
+        with:
+          repository: nageswari928/repository-analyzer
+          path: repository-analyzer
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Dependencies
+        working-directory: repository-analyzer
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Repository Analyzer
+        working-directory: repository-analyzer
+        run: |
+          python analyzer/main.py \
+            --repo-path ../employee-management-portal
+
+      - name: Upload Analysis Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-analysis-report
+          path: repository-analyzer/reports/tech-stack.json
