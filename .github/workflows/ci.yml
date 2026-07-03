@@ -92,7 +92,7 @@ jobs:
         if: always()
         working-directory: playwright
         run: |
-          npx nyc report --cwd ../ --temp-dir .nyc_output --reporter=html --reporter=text --report-dir coverage
+          npx nyc report --cwd ${{ github.workspace }} --temp-dir ${{ github.workspace }}/playwright/.nyc_output --reporter=html --reporter=text --report-dir ${{ github.workspace }}/playwright/coverage
           node scripts/generate-per-test-coverage.js
 
       - name: Upload Code Coverage Report
