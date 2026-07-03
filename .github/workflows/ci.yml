@@ -35,6 +35,12 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install Portal Dependencies
+        run: npm install
+
+      - name: Build Portal App
+        run: npm run build
+
       - name: Install Playwright Dependencies
         working-directory: playwright
         run: npm install
@@ -45,7 +51,7 @@ jobs:
 
       - name: Start Local Server
         run: |
-          python3 -m http.server 8000 &
+          npm run preview -- --port 8000 &
           sleep 5
 
       - name: Run Playwright Tests
@@ -67,7 +73,7 @@ jobs:
       - name: Upload Website
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: dist
 
       - name: Deploy Website
         id: deployment
@@ -113,7 +119,7 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}/repository-analyzer
         run: |
-          python -m analyzer.main --repo-path ../employee-management-portal
+          python -m analyzer.main --repo-path ../employee-management-portal --json-out reports/tech-stack.json
 
       
 
