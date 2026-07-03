@@ -87,6 +87,20 @@ jobs:
           path: |
             playwright/playwright-report
             playwright/test-results
+
+      - name: Generate Code Coverage Reports
+        if: always()
+        working-directory: playwright
+        run: |
+          npx nyc report --cwd ../ --temp-dir .nyc_output --reporter=html --reporter=text --report-dir coverage
+          node scripts/generate-per-test-coverage.js
+
+      - name: Upload Code Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-coverage-report
+          path: playwright/coverage
   analyzer:
     runs-on: ubuntu-latest
 
