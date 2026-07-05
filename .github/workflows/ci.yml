@@ -9,6 +9,8 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  checks: write
+  statuses: write
 
 jobs:
   test-and-build:
@@ -103,6 +105,14 @@ jobs:
         with:
           name: code-coverage-report
           path: playwright/coverage
+
+      - name: Publish Visual Test Report
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Playwright E2E Tests
+          path: playwright/test-results/junit.xml
+          reporter: java-junit
   analyzer:
     runs-on: ubuntu-latest
 
