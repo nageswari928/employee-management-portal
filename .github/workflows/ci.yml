@@ -144,6 +144,11 @@ jobs:
         if: always()
         run: pip install pymongo
 
+      - name: Upload Test Results to MongoDB
+        if: always()
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: python playwright/scripts/upload_test_results.py
 
       - name: Upload Build Metadata to MongoDB
         if: always()
