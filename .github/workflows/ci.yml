@@ -149,6 +149,12 @@ jobs:
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
         run: python playwright/scripts/upload_test_results.py
+
+      - name: Upload Build Metadata to MongoDB
+        if: always()
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: python scripts/log_build_metadata.py
   analyzer:
     runs-on: ubuntu-latest
 
