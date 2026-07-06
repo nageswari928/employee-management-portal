@@ -75,11 +75,11 @@ jobs:
         if: always()
         run: |
           mkdir -p playwright/allure-results/history
-          curl -s -o playwright/allure-results/history/history.json https://nageswari928.github.io/employee-management-portal/allure-report/history/history.json || true
-          curl -s -o playwright/allure-results/history/history-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/history-trend.json || true
-          curl -s -o playwright/allure-results/history/categories-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/categories-trend.json || true
-          curl -s -o playwright/allure-results/history/duration-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/duration-trend.json || true
-          curl -s -o playwright/allure-results/history/retry-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/retry-trend.json || true
+          curl -f -s -o playwright/allure-results/history/history.json https://nageswari928.github.io/employee-management-portal/allure-report/history/history.json || true
+          curl -f -s -o playwright/allure-results/history/history-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/history-trend.json || true
+          curl -f -s -o playwright/allure-results/history/categories-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/categories-trend.json || true
+          curl -f -s -o playwright/allure-results/history/duration-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/duration-trend.json || true
+          curl -f -s -o playwright/allure-results/history/retry-trend.json https://nageswari928.github.io/employee-management-portal/allure-report/history/retry-trend.json || true
 
       - name: Generate Allure Report
         if: always()
