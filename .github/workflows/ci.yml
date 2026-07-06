@@ -139,6 +139,16 @@ jobs:
         with:
           name: allure-report
           path: playwright/allure-report
+
+      - name: Install PyMongo
+        if: always()
+        run: pip install pymongo
+
+      - name: Upload Test Results to MongoDB
+        if: always()
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+        run: python playwright/scripts/upload_test_results.py
   analyzer:
     runs-on: ubuntu-latest
 
