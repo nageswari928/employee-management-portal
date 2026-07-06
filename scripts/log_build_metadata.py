@@ -74,6 +74,7 @@ def main():
 
     report_doc = {
         "repository": repo.split("/")[-1],
+        "run_id": run_id,
         "full_repository": repo,
         "branch": branch,
         "timestamp": datetime.datetime.now(datetime.timezone.utc),
