@@ -113,6 +113,18 @@ jobs:
           name: Playwright E2E Tests
           path: playwright/test-results/junit.xml
           reporter: java-junit
+
+      - name: Generate Allure Report
+        if: always()
+        working-directory: playwright
+        run: npm run allure:generate
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: playwright/allure-report
   analyzer:
     runs-on: ubuntu-latest
 
